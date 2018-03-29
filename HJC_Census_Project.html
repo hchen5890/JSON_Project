@@ -1,0 +1,315 @@
+<html>
+<head>
+</head>
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+	body {
+		background-image:url("BackOfWeb1.png");
+		background-size: 150%;
+		font-family: "Roboto", helvetica, arial, sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		text-rendering: optimizeLegibility;
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	div.table-title {
+		display: block;
+		margin: auto;
+		max-width: 600px;
+		padding:5px;
+		width: 100%;
+	}
+
+	.table-title h3 {
+		color: #fafafa;
+		font-size: 30px;
+		font-weight: 400;
+		font-style:normal;
+		font-family: "Roboto", helvetica, arial, sans-serif;
+		text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+		text-transform:uppercase;
+		text-align: center;
+		outline-style: solid;
+		background-color: black;
+	}
+
+
+/*** Table Styles **/
+
+	.table-fill {
+		background: white;
+		border-radius:3px;
+		border-collapse: collapse;
+		height: 320px;
+		margin: auto;
+		max-width: 600px;
+		padding:5px;
+		width: 100%;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+		animation: float 5s infinite;
+	}
+ 
+	th {
+		color:#D5DDE5;;
+		background:#1b1e24;
+		border-bottom:4px solid #9ea7af;
+		border-right: 1px solid #343a45;
+		font-size:23px;
+		font-weight: 100;
+		padding:24px;
+		text-align:left;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+		vertical-align:middle;
+	}
+
+	th:first-child {
+		border-top-left-radius:3px;
+	}
+ 
+	th:last-child {
+		border-top-right-radius:3px;
+		border-right:none;
+	}
+  
+	tr {
+		border-top: 1px solid #C1C3D1;
+		border-bottom-: 1px solid #C1C3D1;
+		color:#666B85;
+		font-size:16px;
+		font-weight:normal;
+		text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+	}
+ 
+	tr:hover td {
+		background:#4E5066;
+		color:#FFFFFF;
+		border-top: 1px solid #22262e;
+	}
+ 
+	tr:first-child {
+		border-top:none;
+	}
+
+	tr:last-child {
+		border-bottom:none;
+	}
+ 
+	tr:nth-child(odd) td {
+		background:#EBEBEB;
+	}
+ 
+	tr:nth-child(odd):hover td {
+		background:#4E5066;
+	}
+
+	tr:last-child td:first-child {
+		border-bottom-left-radius:3px;
+	}
+ 
+	:last-child td:last-child {
+		border-bottom-right-radius:3px;
+	}
+ 
+	td {
+		background:#FFFFFF;
+		padding:20px;
+		text-align:left;
+		vertical-align:middle;
+		font-weight:300;
+		font-size:18px;
+		text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+		border-right: 1px solid #C1C3D1;
+	}
+
+	td:last-child {
+		border-right: 0px;
+	}
+
+	th.text-left {
+		text-align: left;
+	}
+
+	th.text-center {
+		text-align: center;
+	}
+
+	th.text-right {
+		text-align: right;
+	}
+
+	td.text-left {
+		text-align: left;
+	}
+
+	td.text-center {
+		text-align: center;
+	}
+
+	td.text-right {
+		text-align: right;
+	}
+
+	.card{
+		width:300px;
+		padding:10px;
+		margin:10px;
+		display:inline-block;
+		border-radius:10px;
+		box-shadow:black 5px 5px 5px;
+	}
+	h1{
+		font-family:"Arial";
+		text-shadow:gray 2px 2px 2px;
+	}
+	p,a{
+		font-size:14pt;
+		font-family:"Arial";
+	}
+	img{
+		width:90%;
+		margin:5px;
+		border-radius:10px;
+		box-shadow:black 5px 5px 5px;
+	}
+	a{
+		background-color:blue;
+		text-decoration:none;
+		color:white;
+		font-weight:bold;
+		padding:5px;
+		border-radius:10px;
+		box-shadow:black 5px 5px 5px;
+	}
+
+	#chartStuff:hover{
+		transition: all 3.0s ease-in-out 0s;
+		transform: rotate(360deg);
+	}
+	#ExtraFunH3X{
+		background-color: green;
+		background-size: 800$;
+	}
+</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+	<script type="text/template" id="cardTemplate">
+		<div id="chartStuff">
+		<div class="table-title">
+			<h3>Data... In A Table! For.. {{jurisdiction_name}}</h3>
+		</div>
+		<table class="table-fill">
+		<thead>
+		<tr>
+			<th class="text-left">Section/Divider</th>
+			<th class="text-left">Population Included</th>
+		</tr>
+		</thead>
+		<tbody class="table-hover">
+			<tr>
+				<td class="text-left">Amount of Citizens:</td>
+				<td class="text-left">{{count_us_citizen}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of Males:</td>
+				<td class="text-left">{{count_male}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of Females:</td>
+				<td class="text-left">{{count_female}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of Native Americans:</td>
+				<td class="text-left">{{count_american_indian}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of Asians:</td>
+				<td class="text-left">{{count_asian_non_hispanic}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of African-Americans:</td>
+				<td class="text-left">{{count_black_non_hispanic}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of White People:</td>
+				<td class="text-left">{{count_white_non_hispanic}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of Pacific Islanders:</td>
+				<td class="text-left">{{count_pacific_islander}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Amount of Census Participants:</td>
+				<td class="text-left">{{count_participants}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Percentage of Males:<br>*Will only work with a full 5-digit zipcode</td>
+				<td class="text-left" id="malePercent">{{percent_male}}</td>
+			</tr>
+			<tr>
+				<td class="text-left">Percentage of Females:<br>*Will only work with a full 5-digit zipcode</td>
+				<td class="text-left" id="femalePercent">{{percent_female}}</td>
+			</tr>
+		</tbody>
+</table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</script>
+<script>
+		
+	var citizenCount = 0;
+	var femaleCount = 0;
+	var maleCount = 0;
+	var citizenCountTotaled = 0;
+	var percent_male = 0;
+	var percent_female = 0;
+	
+	var data;
+	
+	function loadJSON(){
+		$.getJSON("https://data.cityofnewyork.us/resource/rreq-n6zk.json",function(results){
+			data=results;
+		})
+	}
+	
+	function search(){
+		var build = "";
+		
+		var cardTemplate = document.getElementById("cardTemplate").innerHTML;
+		
+		var jurisdictionName = document.getElementById("jurisdiction_name");
+		
+		var output = document.getElementById("output");
+		
+		for(var index = 0; index < data.length; index++){
+			if(data[index].jurisdiction_name.toUpperCase().indexOf(jurisdiction_name.value.toUpperCase()) != -1
+			){
+				build += Mustache.render(cardTemplate, data[index]);
+				citizenCount = data[index].count_us_citizen;
+				femaleCount = data[index].count_female;
+				maleCount = data[index].count_male;
+				citizenCountTotaled += parseInt(data[index].count_us_citizen);
+				percent_male = data[index].percent_male * 100 + "%";
+				percent_female = data[index].percent_female * 100 + "%";
+		}
+	}
+	output.innerHTML = build;
+	malePercent.innerHTML = percent_male;
+	femalePercent.innerHTML = percent_female;
+	}
+
+</script>
+
+
+<body onload = "loadJSON()">
+	<input type = "text" id = "jurisdiction_name" placeholder = "Enter A 5-Digit Zipcode" minlength="5" maxlength="5">
+	
+	<button onclick = "search()">Search</button>
+	<div id = "output">
+	</div>
+</body>
+</html>
